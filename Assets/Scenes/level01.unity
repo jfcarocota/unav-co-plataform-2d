@@ -461,6 +461,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  maxVel: 5
 --- !u!50 &543847474
 Rigidbody2D:
   serializedVersion: 4

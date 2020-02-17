@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UNAV2DUtils.GameplaySystem;
 
 public class Player : Character2D
 {
     //Una vez por frame
     void Update()
     {
-        transform.Translate(Vector2.right * Axis.x * moveSpeed * Time.deltaTime);
-        spr.flipX = FlipSprite;
-
-        anim.SetFloat("axisX", Mathf.Abs(Axis.x));
+        //GameplaySystem.MovementTransform(transform, moveSpeed, spr, FlipSprite);
+        //GameplaySystem.MovementImpulse(rb2d, moveSpeed, spr, FlipSprite, maxVel, Grounding);
+        GameplaySystem.MovementVelocity(rb2d, moveSpeed, spr, FlipSprite, maxVel);
+        
+        anim.SetFloat("axisX", Mathf.Abs(GameplaySystem.Axis.x));
         anim.SetBool("grounding", Grounding);
 
         if(JumpButton)

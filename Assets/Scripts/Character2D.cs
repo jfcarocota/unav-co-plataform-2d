@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UNAV2DUtils.GameplaySystem;
 
 public class Character2D : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class Character2D : MonoBehaviour
     protected float rayDistance = 2f;
     [SerializeField]
     protected LayerMask groundLayer;
+    [SerializeField]
+    protected float maxVel;
 
     void Awake()
     {
@@ -29,14 +32,9 @@ public class Character2D : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    protected Vector2 Axis
-    {
-        get => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-    }
-
     protected bool FlipSprite
     {
-        get => Axis.x > 0 ? false : Axis.x < 0 ? true : spr.flipX;
+        get => GameplaySystem.Axis.x > 0 ? false : GameplaySystem.Axis.x < 0 ? true : spr.flipX;
     }
 
     protected bool JumpButton
