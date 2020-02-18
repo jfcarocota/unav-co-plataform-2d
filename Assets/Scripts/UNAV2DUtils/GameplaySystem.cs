@@ -14,6 +14,11 @@ namespace UNAV2DUtils.GameplaySystem
             get => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         }
 
+         public static bool JumpButton
+        {
+            get => Input.GetButtonDown("Jump");
+        }
+
         ///<summary>
         ///This function moves the player using Transform.
         ///</summary>
@@ -60,6 +65,31 @@ namespace UNAV2DUtils.GameplaySystem
             Vector2 finalVel = new Vector2(clampVel.x, rb2d.velocity.y);
             rb2d.velocity = finalVel;
             spr.flipX = flip;
+        }
+
+        ///<summary>
+        ///This function moves the player using Rigidbody2D Position.
+        ///</summary>
+        ///<param name="rb2d">The Rigidbody2D component of player.</param>
+        ///<param name="moveSpeed">The speed of the player.</param>
+        ///<param name="spr">The SpriteRenderer component of player.</param>
+        ///<param name="flip">Indicates when can i flip the sprite of player.</param>
+        public static void MovementPosition(Rigidbody2D rb2d, float moveSpeed,SpriteRenderer spr, bool flip)
+        {
+            Vector2 velocity = new Vector2(moveSpeed * Axis.x * Time.fixedDeltaTime * 100f, 0);
+            rb2d.MovePosition(rb2d.position + velocity);
+            spr.flipX = flip;
+        }
+
+        ///<summary>
+        ///This function make jump the player using Rigidbody2D Position.
+        ///</summary>
+        ///<param name="rb2d">The Rigidbody2D component of player.</param>
+        ///<param name="jumpForce">The jump force of the player.</param>
+        public static void JumpPosition(Rigidbody2D rb2d, float jumpForce)
+        {
+            Vector2 velocity = new Vector2(0, jumpForce * Time.fixedDeltaTime * 100f);
+            rb2d.MovePosition(rb2d.position + velocity);
         }
     }
 }

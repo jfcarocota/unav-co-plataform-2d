@@ -37,11 +37,6 @@ public class Character2D : MonoBehaviour
         get => GameplaySystem.Axis.x > 0 ? false : GameplaySystem.Axis.x < 0 ? true : spr.flipX;
     }
 
-    protected bool JumpButton
-    {
-        get => Input.GetButtonDown("Jump");
-    }
-
     protected bool Grounding
     {
         get => Physics2D.Raycast(transform.position, Vector2.down, rayDistance, groundLayer);

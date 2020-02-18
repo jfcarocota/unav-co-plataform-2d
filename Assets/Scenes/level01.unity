@@ -454,8 +454,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef22e15719ea659418cc256dd12526fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  jumpForce: 7
+  moveSpeed: 0.1
+  jumpForce: 0.44
   rayColor: {r: 1, g: 0, b: 1, a: 1}
   rayDistance: 1.7
   groundLayer:
@@ -477,7 +477,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 50
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
